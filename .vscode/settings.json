@@ -1,0 +1,20 @@
+{
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#cfee22",
+        "editor.selectionBackground": "#12fac059",
+        "editor.selectionHighlightBackground": "#12fac059",
+        "editorError.foreground": "#aa3653",
+        "activityBar.background": "#17ad5a",
+        "titleBar.activeBackground": "#17ad5a",
+        "titleBar.activeForeground": "#FEF9EF"
+    },
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ]
+    }
+}
