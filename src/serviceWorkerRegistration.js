@@ -9,7 +9,7 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
-import send from "./customSW";
+import { sendInitialNotification } from "./custom-service-worker";
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
@@ -93,7 +93,7 @@ function registerValidSW(swUrl, config) {
           }
         };
       };
-      send(registration).catch((err) => console.error(err));
+      // sendInitialNotification(registration).catch((err) => console.error(err));
     })
     .catch((error) => {
       console.error("Error during service worker registration:", error);

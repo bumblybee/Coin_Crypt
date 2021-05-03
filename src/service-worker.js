@@ -74,8 +74,24 @@ self.addEventListener("message", (event) => {
 
 self.addEventListener("push", (e) => {
   const data = e.data.json();
-
-  self.registration.showNotification(data.title, {
-    body: "Notification from server successful",
-  });
+  console.log(data);
+  e.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+    })
+  );
 });
+
+// self.addEventListener("fetch", (e) => {
+//   if (e.request.url === "http://localhost:7777/notify") {
+//     console.log(e);
+//     self.addEventListener("push", (e) => {
+//       const data = e.data.json();
+//       self.registration.showNotification(data.title, {
+//         body: data.body,
+//       });
+//     });
+//   } else {
+//     return;
+//   }
+// });

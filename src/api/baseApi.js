@@ -7,3 +7,8 @@ export const getPrice = async (coin) => {
 
   return res.data;
 };
+
+export const setNotification = async (data) => {
+  const res = await axios.post("http://localhost:7777/notify", data);
+  return res;
+};

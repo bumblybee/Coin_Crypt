@@ -1,11 +1,27 @@
 const publicVapidKey =
   "BPrvvwwHG8R5d3wTfIEA52unQslAUC8Uv7kkIerNbdV7XV__k-DbKpm9d1SrjPQ110FIm1W8fCC7o9KA_GU_g60";
 
-// if ("serviceWorker" in navigator) {
-//   send().catch((err) => console.error(err));
+// export async function sendPriceNotification(registration) {
+//   const subscription = await registration.pushManager.subscribe({
+//     userVisibleOnly: true,
+//     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
+//   });
+
+//   await fetch("http://localhost:7777/price-notify", {
+//     method: "POST",
+//     body: JSON.stringify(subscription),
+//     headers: {
+//       "content-type": "application/json",
+//     },
+//   });
 // }
 
-export default async function send(registration) {
+export async function subscribePush(userData) {
+  const registration = await navigator.serviceWorker.ready;
+  if (!registration || !registration.pushManager) {
+    return;
+  }
+
   const subscription = await registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
@@ -18,6 +34,8 @@ export default async function send(registration) {
       "content-type": "application/json",
     },
   });
+
+  return subscription;
 }
 
 function urlBase64ToUint8Array(base64String) {
